@@ -1,0 +1,41 @@
+<!-- Desc: applicants table -->
+<div class="container-lpage">
+  <table
+    class="table table-primary table-striped table-hover mt-3 align-middle"
+  >
+    <thead class="fs-4">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Resume</th>
+      </tr>
+    </thead>
+    <tbody class="fs-5">
+      <%if(job.applicants && job.applicants.length > 0) { %> <%
+      job.applicants.forEach((applicant, index) => { %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= applicant.name %></td>
+        <td><%= applicant.email %></td>
+        <td><%= applicant.contact %></td>
+        <td>
+          <button class="btn btn-primary">
+            <a
+              href="/<%= applicant.resumePath %>"
+              target="_blank"
+              class="text-white text-decoration-none"
+              >View</a
+            >
+          </button>
+        </td>
+      </tr>
+      <% }) %> <% } else { %>
+      <tr>
+        <td colspan="5" class="text-center">No applicants found</td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

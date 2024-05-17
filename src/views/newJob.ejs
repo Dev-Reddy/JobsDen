@@ -1,0 +1,98 @@
+<!-- NEW JOB VIEW -->
+<div class="container-lpage">
+  <div class="form-box">
+    <h1 class="form-heading text-primary">Post A New Job</h1>
+
+    <!-- DISPLAY THE ERROR MESSAGE IF ANY-->
+    <%if(errorMessage){%>
+    <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+    <%}%>
+
+    <!-- NEW JOB FORM -->
+    <form action="/new-job" method="POST" class="job-form">
+      <!-- JOB CATEGORY SELECTION -->
+      <div class="mb-3">
+        <select class="form-select" id="job-category" name="jobcategory">
+          <option selected disabled>Select New Job Category</option>
+          <option value="Tech">Tech</option>
+          <option value="Non-Tech">Non-tech</option>
+        </select>
+      </div>
+
+      <!-- JOB DESIGNATION SELECTION -->
+      <div class="mb-3">
+        <select class="form-select" id="job-designation" name="jobdesignation">
+          <option selected disabled>Select New Job Designation</option>
+        </select>
+      </div>
+
+      <!-- JOB LOCATION -->
+      <div class="mb-3">
+        <label for="job-location" class="form-label">Enter Job Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="job-location"
+          name="joblocation"
+        />
+      </div>
+
+      <!-- Company Name -->
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Company Name</span>
+          <input
+            type="text"
+            class="form-control"
+            id="company-name"
+            aria-describedby="basic-addon3 basic-addon4"
+            name="companyname"
+          />
+        </div>
+      </div>
+
+      <!-- Salary and Positions -->
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Salary Range"
+          id="salary"
+          name="salary"
+        />
+        <span class="input-group-text">Total Positions</span>
+        <input
+          type="number"
+          class="form-control"
+          id="positions"
+          name="numberofopenings"
+        />
+      </div>
+
+      <!-- Skills Required -->
+      <div class="input-group mb-3">
+        <select
+          class="form-select"
+          multiple
+          id="skills"
+          size="3"
+          name="skillsrequired"
+          required
+        >
+          <option selected disabled>Select skills required for this job</option>
+        </select>
+        <span class="input-group-text">Apply By</span>
+        <input type="date" class="form-control" id="date" name="applyby" />
+      </div>
+
+      <!-- Submit button -->
+
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
+<!-- JAVASCRIPT TO HANDLE DYNAMIC CHANGES LIKE DIFFERENT  -->
+<!-- JOB DESIGNATIONS FOR TECH AND NON TECH -->
+
+<script src="/js/newJob.js"></script>
