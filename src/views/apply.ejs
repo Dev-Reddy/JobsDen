@@ -1,0 +1,80 @@
+<!-- NEW JOB VIEW -->
+<div class="container-lpage">
+  <div class="form-box">
+    <h1 class="form-heading text-primary">Apply For Job</h1>
+    <h3 class="form-heading text-danger">
+      You are applying for <%=job.jobdesignation%> opportunity in
+      <%=job.joblocation%> at <%=job.companyname%>
+    </h3>
+
+    <!-- DISPLAY THE ERROR MESSAGE IF ANY-->
+    <%if(errorMessage){%>
+    <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+    <%}%>
+
+    <!-- JOB CATEGORY SELECTION -->
+    <form
+      action="/apply/<%=job.id%>"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Name</span>
+          <input
+            required
+            name="name"
+            type="text"
+            aria-label="name"
+            class="form-control"
+            placeholder="enter your name"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Email</span>
+          <input
+            required
+            name="email"
+            type="email"
+            aria-label="email"
+            class="form-control"
+            value="<%=email%>"
+            readonly="true"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Contact</span>
+          <input
+            required
+            name="contact"
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            placeholder="+91 ____ __ ____"
+          />
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Resume</label>
+        <input
+          name="resume"
+          type="file"
+          class="form-control"
+          id="inputGroupFile01"
+          required
+        />
+      </div>
+
+      <button class="w-100 mb-3 mt-2 btn btn-md btn-primary" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

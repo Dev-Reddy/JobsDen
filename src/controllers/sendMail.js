@@ -58,9 +58,54 @@ export async function sendApplyEmail(job, applicant) {
     Attached is your resume for reference. We will get back to you soon!`,
 
     //html content of the email
-    html: `<h1>Congratulations ${applicant.name}!!!</h1>
-    <h3>You have successfully applied for the role of ${job.jobdesignation} at ${job.companyname}!</h3>
-    <h3>Attached is your resume for reference. We will get back to you soon!</h3>`,
+    html: `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Application Confirmation</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                padding: 20px;
+            }
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            h1 {
+                color: #4CAF50;
+                font-size: 24px;
+            }
+            h3 {
+                color: #555;
+                font-size: 18px;
+            }
+            .footer {
+                margin-top: 20px;
+                font-size: 14px;
+                color: #777;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Congratulations ${applicant.name}!!!</h1>
+            <h3>You have successfully applied for the role of ${job.jobdesignation} at ${job.companyname}!</h3>
+            <h3>Attached is your resume for reference. We will get back to you soon!</h3>
+            <div class="footer">
+                <p>Thank you for applying with us!</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    `,
 
     //attachments in the email
     //applicants resume is attached to the email for reference

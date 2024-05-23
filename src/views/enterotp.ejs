@@ -1,0 +1,51 @@
+<!-- NEW JOB VIEW -->
+<div class="container-lpage">
+  <div class="form-box">
+    <h1 class="form-heading text-primary">Apply For Job</h1>
+    <h3 class="form-heading text-danger">
+      You are applying for <%=job.jobdesignation%> opportunity in
+      <%=job.joblocation%> at <%=job.companyname%>
+    </h3>
+
+    <!-- DISPLAY THE ERROR MESSAGE IF ANY-->
+    <%if(errorMessage){%>
+    <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+    <%}%>
+
+    <!-- JOB CATEGORY SELECTION -->
+    <form action="/verify-otp/<%=job.id%>" method="post">
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">Email</span>
+          <input
+            required
+            name="email"
+            type="text"
+            aria-label="email"
+            class="form-control"
+            value="<%=email%>"
+            disabled
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">OTP</span>
+          <input
+            required
+            name="otp"
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            placeholder="Enter"
+          />
+        </div>
+      </div>
+
+      <button class="w-100 mb-3 mt-2 btn btn-md btn-primary" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

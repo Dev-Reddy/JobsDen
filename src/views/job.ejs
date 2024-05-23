@@ -388,30 +388,12 @@
         <!-- form start  -->
         <div class="container p-3 mx-auto w-100 form-box my-5 rounded-md">
           <h4 style="color: #181642" class="text-center mb-3">
-            apply in less than 1 minute
+            Enter email-id for verification
           </h4>
           <%if(errorMessage){%>
           <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
           <%}%>
-          <form
-            action="/apply/<%=job.id%>"
-            method="post"
-            enctype="multipart/form-data"
-          >
-            <div class="mb-3">
-              <div class="input-group">
-                <span class="input-group-text">Name</span>
-                <input
-                  required
-                  name="name"
-                  type="text"
-                  aria-label="name"
-                  class="form-control"
-                  placeholder="enter your name"
-                />
-              </div>
-            </div>
-
+          <form action="/otp-send/<%=job.id%>" method="post">
             <div class="mb-3">
               <div class="input-group">
                 <span class="input-group-text">Email</span>
@@ -424,41 +406,13 @@
                   placeholder="enter your email"
                 />
               </div>
-            </div>
-
-            <div class="mb-3">
-              <div class="input-group">
-                <span class="input-group-text">Contact</span>
-                <input
-                  required
-                  name="contact"
-                  type="tel"
-                  aria-label="First name"
-                  class="form-control"
-                  placeholder="+91 ____ __ ____"
-                />
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <label class="input-group-text" for="inputGroupFile01"
-                >Resume</label
+              <button
+                class="w-100 mb-3 mt-2 btn btn-md btn-primary"
+                type="submit"
               >
-              <input
-                name="resume"
-                type="file"
-                class="form-control"
-                id="inputGroupFile01"
-                required
-              />
+                Generate OTP
+              </button>
             </div>
-
-            <button
-              class="w-100 mb-3 mt-2 btn btn-md btn-primary"
-              type="submit"
-            >
-              Submit
-            </button>
           </form>
         </div>
         <!-- form end  -->

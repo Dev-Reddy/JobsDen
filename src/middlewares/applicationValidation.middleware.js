@@ -9,9 +9,10 @@ import JobModel from "../models/job.model.js";
 
 export const applicationValidateRequest = async (req, res, next) => {
   // Setup rules for validation.
+
+  console.log(req.body.email);
   const rules = [
     body("name").notEmpty().withMessage("Enter valid name"),
-    body("email").notEmpty().isEmail().withMessage("Enter valid email"),
     body("contact").notEmpty().withMessage("Enter valid contact number"),
     body("resume").custom((value, { req }) => {
       if (!req.file) {
@@ -61,6 +62,7 @@ export const applicationValidateRequest = async (req, res, next) => {
 
   // if errros, return the error message
   if (!validationErrors.isEmpty()) {
+    console.log(validationErrors.array());
     return res.render("job", {
       job,
       userEmail: req.session.userEmail,

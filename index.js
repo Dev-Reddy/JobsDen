@@ -148,7 +148,15 @@ app.post("/jobs/:id/delete", auth, jobController.deleteJob);
 
 app.get("/jobs/:id/applicants", applicantController.getAllApplicants);
 
+app.get("/apply-page/:id", applicantController.getApplyPage);
+
 //Post Routes
+
+//OTP Verification for applying to a job
+
+app.post("/otp-send/:id", applicantController.getOtpVerification);
+
+app.post("/verify-otp/:id", applicantController.verifyOtp);
 
 //Apply for a Job
 

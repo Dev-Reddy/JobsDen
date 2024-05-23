@@ -5,6 +5,7 @@
 import ApplicantModel from "../models/applicant.model.js";
 import JobModel from "../models/job.model.js";
 import { sendApplyEmail } from "./sendMail.js";
+import { sendOTPEmail } from "./sendOtp.js";
 
 //Creating the Applicant Controller Class
 
@@ -87,6 +88,123 @@ class ApplicantController {
   }
 
   // --------------------------------------------------------
+
+  //OTP Verification for applying to a job - POST /otp-verification/:id
+
+  //Route to controller path - app.post("/otp-verification/:id", applicantController.getOtpVerification);
+
+  async getOtpVerification(req, res) {
+    //Get the job id from the request parameters
+    const jobId = req.params.id;
+
+    //Get the job details using the job id
+    const job = JobModel.getJobById(jobId);
+
+    //Get the applicant details from the request body
+    const { name, email, contact } = req.body;
+
+    //If the job does not exist, render the 404 page
+    if (!job) {
+      return res.status(404).render("404", {
+        errorMessage: "Job not found!",
+        userEmail: req.session.userEmail,
+        userName: req.session.userName,
+      });
+    }
+
+    const otp = await sendOTPEmail(job, email);
+
+    req.session.otp = otp;
+    req.session.applicantEmail = email;
+
+    //Render the OTP verification page with the job details and the applicant details
+    res.render("enterotp", {
+      email,
+      contact,
+      userEmail: req.session.userEmail,
+      userName: req.session.userName,
+      errorMessage: "",
+      job,
+    });
+  }
+
+  verifyOtp(req, res) {
+    //Get the job id from the request parameters
+    const jobId = req.params.id;
+
+    //Get the job details using the job id
+    const job = JobModel.getJobById(jobId);
+
+    //Get the applicant details from the request body
+    const { otp } = req.body;
+
+    const email = req.session.applicantEmail;
+
+    //If the OTP entered by the applicant is incorrect, render the OTP verification page with an error message
+    if (otp != req.session.otp) {
+      return res.render("enterotp", {
+        email,
+        userEmail: req.session.userEmail,
+        userName: req.session.userName,
+        errorMessage: "Invalid OTP! Please enter the correct OTP.",
+        job,
+      });
+    }
+
+    req.session.otp = null;
+    req.session.applicantEmail = email;
+
+    //put verified job id in session
+
+    req.session.jobId = jobId;
+
+    res.redirect(`/apply-page/${jobId}`);
+  }
+
+  getApplyPage(req, res) {
+    //Get the job id from the request parameters
+    const jobId = req.params.id;
+    const email = req.session.applicantEmail;
+
+    //Get the job details using the job id
+    const job = JobModel.getJobById(jobId);
+
+    //If the job does not exist, render the 404 page
+    if (!job) {
+      return res.status(404).render("404", {
+        errorMessage: "Job not found!",
+        userEmail: req.session.userEmail,
+        userName: req.session.userName,
+      });
+    }
+
+    //If the job id in the session does not match the job id in the request parameters, render the 404 page
+
+    if (req.session.jobId !== jobId) {
+      return res.status(404).render("404", {
+        errorMessage: "Please verify OTP first!",
+        userEmail: req.session.userEmail,
+        userName: req.session.userName,
+      });
+    }
+
+    if (!email) {
+      return res.status(404).render("404", {
+        errorMessage: "Please verify OTP first!",
+        userEmail: req.session.userEmail,
+        userName: req.session.userName,
+      });
+    }
+
+    //Render the apply page with the job details
+    res.render("apply", {
+      email,
+      job,
+      userEmail: req.session.userEmail,
+      userName: req.session.userName,
+      errorMessage: "",
+    });
+  }
 }
 
 //Exporting the Applicant Controller Class
