@@ -13,12 +13,12 @@ const generateOtp = async (req, res) => {
 
 export async function sendOTPEmail(job, email) {
   // --------------------------------------------------------
-
+  console.log("otp");
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "thedevreddy@gmail.com",
-      pass: "bvuyjufzjspbmhbz",
+      pass: "xajd zlwn mnoa hkvl",
     },
   });
 
@@ -28,7 +28,7 @@ export async function sendOTPEmail(job, email) {
 
   const mailOptions = {
     //sender's email
-    from: "codingninjas2k16@gmail.com",
+    from: "thedevreddy@gmail.com",
 
     //recipient's email
     to: email,

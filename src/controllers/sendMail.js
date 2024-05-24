@@ -36,7 +36,7 @@ export async function sendApplyEmail(job, applicant) {
     service: "gmail",
     auth: {
       user: "thedevreddy@gmail.com",
-      pass: "bvuyjufzjspbmhbz",
+      pass: "xajd zlwn mnoa hkvl",
     },
   });
 
