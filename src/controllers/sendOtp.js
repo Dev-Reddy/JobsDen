@@ -18,7 +18,7 @@ export async function sendOTPEmail(job, email) {
     service: "gmail",
     auth: {
       user: "thedevreddy@gmail.com",
-      pass: "xajd zlwn mnoa hkvl",
+      pass: "xajdzlwnmnoahkvl",
     },
   });
 
