@@ -34,7 +34,7 @@ JobsDen is a job search portal built with Node.js and Express.js, designed to fa
 
 2. **Applicant Model**:
 
-   - All applicants for various jobs are stored with their name, number, email and resume by creating a separate Applicant Model.
+   - All applicants for various jobs are stored with their name, number, email, and resume by creating a separate Applicant Model.
 
 3. **Pagination**:
 
@@ -85,7 +85,11 @@ JobsDen is a job search portal built with Node.js and Express.js, designed to fa
     - If an unregistered user tries to log in, they are shown an error message prompting them to register first.
 
 15. **Validation Middleware**:
+
     - Validation middlewares are implemented for every form submission, displaying errors to users for accurate data input and enhancing data integrity.
+
+16. **OTP Verification for Email**:
+    - Added an OTP verification step for email addresses during the application process to avoid bot applications, ensuring only genuine applicants apply for job postings.
 
 ## <span style="color:#3498db">Required Features as per Problem Statement</span>
 
@@ -211,7 +215,9 @@ JobsDen is a job search portal built with Node.js and Express.js, designed to fa
   - `js`: Contains JavaScript files for client-side functionality.
   - `uploads`: Contains uploaded resume files.
 
-## <span style="color:#3498db">Contributors</span>
+## <span style="color:#3498db">Contributors</
+
+span>
 
 - Dev Reddy
 
