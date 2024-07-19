@@ -53,6 +53,8 @@
             </li>
             <li class="nav-item dropdown">
               <!-- DISPLAY USER NAME WHEN LOGGED IN -->
+
+              <%if(userName){%>
               <a
                 class="nav-link dropdown-toggle text-white"
                 href="#"
@@ -60,8 +62,11 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <%if(userName){%> <%=userName%> <%}else{%> Recruiter <%}%>
+                <%=userName%>
               </a>
+              <%} else{%>
+              <a class="nav-link text-white" href="/login"> Recruiter Login </a>
+              <%}%>
 
               <ul class="dropdown-menu">
                 <!-- SHOW LOGOUT BUTTON IF LOGGED IN -->
@@ -76,20 +81,13 @@
                     </button>
                   </form>
                 </li>
-                <%}else{%>
-
-                <!-- ELSE SHOW LOGIN BUTTON -->
-                <li>
-                  <a class="dropdown-item text-primary" href="/login">Login</a>
-                </li>
-                <%}%>
-
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item text-primary" href="/new-job"
                     >Post New Job</a
                   >
                 </li>
+                <%}%>
               </ul>
             </li>
           </ul>
