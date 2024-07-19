@@ -215,11 +215,11 @@ JobsDen is a job search portal built with Node.js and Express.js, designed to fa
   - `js`: Contains JavaScript files for client-side functionality.
   - `uploads`: Contains uploaded resume files.
 
-## <span style="color:#3498db">Contributors</
+## <span style="color:#3498db">Contributors</span>
 
-span>
-
+<span>
 - Dev Reddy
+</span>
 
 ## <span style="color:#3498db">License</span>
 
