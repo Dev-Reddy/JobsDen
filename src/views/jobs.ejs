@@ -60,12 +60,24 @@
             /></svg
           ><%=job.salary%>
         </p>
-        <div class="skills p-1">
+        <!-- <div class="skills p-1">
           <%job.skillsrequired.forEach((skill)=>{%>
           <button class="btn btn-sm btn-outline-primary fs-6">
             <%=skill%>
           </button>
           <%})%>
+        </div> -->
+
+        <!-- Skills Buttons (Each button in its own form) -->
+        <div class="skills p-1">
+          <% job.skillsrequired.forEach((skill) => { %>
+          <form action="/jobs" method="GET" style="display: inline">
+            <input type="hidden" name="searchQuery" value="<%= skill %>" />
+            <button type="submit" class="btn btn-sm btn-outline-primary fs-6">
+              <%= skill %>
+            </button>
+          </form>
+          <% }) %>
         </div>
 
         <!-- DISPLAY YOUR POSTING WITH RED BUTTON FOR RECRUITER WHO POSTED THE JOB -->

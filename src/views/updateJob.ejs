@@ -72,7 +72,7 @@
 
       <!-- Skills Required -->
       <div class="input-group mb-3">
-        <select
+        <!-- <select
           class="form-select"
           multiple
           id="skills"
@@ -80,8 +80,25 @@
           name="skillsrequired"
           required
         >
-          <option selected disabled>Select skills required for this job</option>
-        </select>
+          <option disabled>Select skills required for this job</option>
+        </select> -->
+
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+          >
+            Select Skills Required for this Job
+          </button>
+          <ul
+            class="dropdown-menu p-2"
+            id="skills"
+            style="width: 200px; max-height: 200px; overflow-y: auto"
+          ></ul>
+        </div>
         <span class="input-group-text">Apply By</span>
         <input type="date" class="form-control" id="date" name="applyby" />
       </div>
