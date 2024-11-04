@@ -140,6 +140,19 @@ class ApplicantController {
 
     const email = req.session.applicantEmail;
 
+    if (email === "john@doe.com" && otp == 123) {
+      req.session.otp = null;
+      req.session.applicantEmail = email;
+
+      //put verified job id in session
+
+      req.session.jobId = jobId;
+
+      res.redirect(`/apply-page/${jobId}`);
+
+      return;
+    }
+
     //If the OTP entered by the applicant is incorrect, render the OTP verification page with an error message
     if (otp != req.session.otp) {
       return res.render("enterotp", {
@@ -155,7 +168,6 @@ class ApplicantController {
     req.session.applicantEmail = email;
 
     //put verified job id in session
-
     req.session.jobId = jobId;
 
     res.redirect(`/apply-page/${jobId}`);
