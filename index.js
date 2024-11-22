@@ -54,7 +54,7 @@ app.use(ejsLayouts);
 //Session Middleware
 app.use(
   session({
-    secret: "SecretKey",
+    secret: "ecDaD0I=l@*wV44a<fL_",
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
